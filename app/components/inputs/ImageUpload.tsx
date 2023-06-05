@@ -33,9 +33,13 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onChange, value }) => {
       }}
     >
       {({ open }) => {
+        function handleOnClick(e: React.MouseEvent) {
+          e.preventDefault();
+          open();
+        }
         return (
           <div
-            onClick={() => open?.()}
+            onClick={handleOnClick}
             className="
               relative
               cursor-pointer

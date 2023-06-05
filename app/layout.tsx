@@ -1,5 +1,6 @@
 import ToasterProvider from "./Providers/ToasterProvider";
 import getCurrentUser from "./actions/getCurrentUser";
+import ClientOnly from "./components/ClientOnly";
 import LoginModal from "./components/modals/LoginModal";
 import RegisterModal from "./components/modals/RegisterModal";
 import RentModal from "./components/modals/RentModal";
@@ -23,14 +24,14 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        {/* <ClientOnly> */}
-        <ToasterProvider />
-        <LoginModal />
-        <RegisterModal />
-        {/* <SearchModal /> */}
-        <RentModal />
-        <Navbar currentUser={currentUser} />
-        {/* </ClientOnly> */}
+        <ClientOnly>
+          <ToasterProvider />
+          <LoginModal />
+          <RegisterModal />
+          {/* <SearchModal /> */}
+          <RentModal />
+          <Navbar currentUser={currentUser} />
+        </ClientOnly>
         <div className="pb-20 pt-28">{children}</div>
       </body>
     </html>
